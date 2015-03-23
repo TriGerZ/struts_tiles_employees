@@ -16,7 +16,7 @@
     </global-exceptions>
 
     <global-forwards>
-        <forward name="login" path="tiles.test"/>
+        <forward name="login" path="tiles.login"/>
     </global-forwards>
 
     <action-mappings>
@@ -25,7 +25,7 @@
         parameter="/login.jsp" /> -->
         
     <action path="/index" type="org.apache.struts.actions.ForwardAction"
-        parameter="tiles.test" />    
+        parameter="tiles.login" />    
     
     <action path="/addemploye" type="org.apache.struts.actions.ForwardAction"
         parameter="/addemploye.jsp" />
@@ -33,7 +33,7 @@
     <action path="/Login"
       type="com.myapp.struts.action.LoginAction"
       validate="true"
-      input="/login.jsp"
+      input="tiles.login"
       name="loginForm"
       scope="request" >
       <forward name="success" path="/EmployeListe.do"/>
@@ -42,7 +42,7 @@
     <action path="/EmployeListe"
       type="com.myapp.struts.action.EmployeListeAction"
       scope="request" >
-      <forward name="success" path="/employeliste.jsp"/>
+      <forward name="success" path="tiles.employeliste"/>
     </action>
 
     <action path="/Add"

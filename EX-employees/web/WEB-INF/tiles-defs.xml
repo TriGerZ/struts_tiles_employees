@@ -43,9 +43,15 @@
         <put name="footer" value="/tiles-components/footer.jsp"/>
     </definition>
     
-    <definition name="tiles.test" extends="rootLayout">
-        <put name="title" value="Titre test"/>
-        <put name="content" value="/tiles-components/test.jsp"/>
+    <definition name="tiles.login" extends="rootLayout">
+        <put name="title" value="Base de données des employés"/>
+        <put name="content" value="/tiles-components/login.jsp"/>
     </definition>
     
+    <definition name="tiles.employeliste" extends="rootLayout">
+        <put name="title" value="Base de données des employés"/>
+        <put name="content" value="/tiles-components/employeliste.jsp"/>
+    </definition>
+    
+     
 </tiles-definitions>
