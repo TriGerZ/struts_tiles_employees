@@ -9,10 +9,12 @@
         <html:base/>
     </head>
     <body>
+
         <tiles:insert attribute="header"/>
 
         <tiles:insert attribute="content"/>
 
         <tiles:insert attribute="footer"/>
+
     </body>
 </html:html>

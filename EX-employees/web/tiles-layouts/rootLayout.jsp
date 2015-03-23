@@ -9,51 +9,12 @@
         <html:base/>
     </head>
     <body>
-        <table width="750" cellspacing="0" cellpadding="0" border="0">
-            <tr>
-                <td>
-                    <!-- ============================================================ -->
-                    <!-- Begin header -->
-                    <tiles:insert attribute="header"/>
-                    <!-- End header -->
-                    <!-- ============================================================ -->
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br>
-                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                        <tr valign="top">
-                            <td width="35%">
-                                <!-- ============================================================ -->
-                                <!-- Begin leftMenu -->
-                                <tiles:insert attribute="leftMenu"/>
-                                <!-- End leftMenu -->
-                                <!-- ============================================================ -->
-                                <!-- ============================================================ -->
-                            </td>
-                            <td width="2%">&nbsp;</td>
-                            <td width="63%">
-                                <!-- ============================================================ -->
-                                <!-- Begin content -->
-                                <tiles:insert attribute="content"/>
-                                <!-- End content -->
-                                <!-- ============================================================ -->
-                            </td>
-                        </tr>
-                    </table>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <!-- ============================================================ -->
-                    <!-- Begin footer -->
-                    <tiles:insert attribute="footer"/>
-                    <!-- End footer -->
-                    <!-- ============================================================ -->
-                </td>
-            </tr>
-        </table>
+
+        <tiles:insert attribute="header"/>
+
+        <tiles:insert attribute="content"/>
+
+        <tiles:insert attribute="footer"/>
+
     </body>
 </html:html>
