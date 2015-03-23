@@ -11,7 +11,6 @@
 </logic:notPresent>
 
 
-
 <html:errors />
 
 <table width="750"
@@ -46,9 +45,9 @@
                 <bean:write name="employe" property="rolename" />
             </td>
             <td>
-                <a href="Edit.do?username=<bean:write name="employe"
+                <a href="../Edit.do?username=<bean:write name="employe"
                             property="username" />">Modifier</a>
-                <a href="Delete.do?username=<bean:write name="employe"
+                <a href="../Delete.do?username=<bean:write name="employe"
                             property="username" />">Supprimer</a>
             </td>
         </tr>
@@ -60,5 +59,5 @@
     </tr>
 </table>
 <font size="-1" face="arial">
-<a href="addemploye.do">Ajouter un employé</a>
+<a href="../addemploye.do">Ajouter un employé</a>
 </font>

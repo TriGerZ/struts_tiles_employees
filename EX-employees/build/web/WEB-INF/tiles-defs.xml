@@ -53,5 +53,14 @@
         <put name="content" value="/tiles-components/employeliste.jsp"/>
     </definition>
     
-     
+    <definition name="tiles.addemploye" extends="rootLayout">
+        <put name="title" value="Base de données des employés"/>
+        <put name="content" value="/tiles-components/addemploye.jsp"/>
+    </definition>
+    
+    <definition name="tiles.editemploye" extends="rootLayout">
+        <put name="title" value="Base de données des employés"/>
+        <put name="content" value="/tiles-components/editemploye.jsp"/>
+    </definition>
+   
 </tiles-definitions>
