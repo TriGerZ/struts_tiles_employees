@@ -38,6 +38,7 @@
 
     <definition name="rootLayout" path="/tiles-layouts/rootLayout.jsp">
         <put name="header" value="/tiles-components/header.jsp"/>
+        <put name="leftMenu" value="/tiles-components/leftMenu.jsp"/>
         <put name="title" value="CHANGE-ME"/>
         <put name="content" value="CHANGE-ME"/>
         <put name="footer" value="/tiles-components/footer.jsp"/>
