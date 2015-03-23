@@ -16,13 +16,16 @@
     </global-exceptions>
 
     <global-forwards>
-        <forward name="login" path="/login.jsp"/>
+        <forward name="login" path="tiles.test"/>
     </global-forwards>
 
     <action-mappings>
         
+    <!-- <action path="/index" type="org.apache.struts.actions.ForwardAction"
+        parameter="/login.jsp" /> -->
+        
     <action path="/index" type="org.apache.struts.actions.ForwardAction"
-        parameter="/login.jsp" />
+        parameter="tiles.test" />    
     
     <action path="/addemploye" type="org.apache.struts.actions.ForwardAction"
         parameter="/addemploye.jsp" />
@@ -83,6 +86,7 @@
 
     </action-mappings>
    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     <message-resources parameter="com/myapp/struts/ApplicationResources"/>    
     
     <!-- ========================= Tiles plugin ===============================-->
