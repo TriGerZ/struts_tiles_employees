@@ -36,7 +36,9 @@
 
     end samples -->
 
-    <definition name="${YOUR_DEFINITION_HERE}">
+    <definition name=".rootLayout" path="/tiles-layouts/rootLayout.jsp">
+        <put name="title"  value="Emp Application" />
+        <put name="body" value = "index.jsp" />
     </definition>
-
+    
 </tiles-definitions>

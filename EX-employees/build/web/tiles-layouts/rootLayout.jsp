@@ -5,10 +5,10 @@
 <html:html>
 <head>
   <%-- We rely on tiles-defs.xml to set the title --%>
-  <title>Ex-Employees > Example > <tiles:getAsString name="titleString"/></title>
+  <title>Ex-Employees > <tiles:getAsString name="title"/></title>
   <html:base/>
 </head>
 <body>
-
+    <tiles:insert attribute="content"/>
 </body>
 </html:html>
