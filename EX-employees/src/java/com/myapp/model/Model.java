@@ -18,6 +18,8 @@ public interface Model {
 
     public int addEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep) throws ModelException;
 
+    public String getByLoginPassword(String username, String password) throws ModelException;
+    
     public int editEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep) throws ModelException;
 
     public int deleteEmploye(String username) throws ModelException;
