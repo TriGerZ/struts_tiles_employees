@@ -19,7 +19,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-public class EditEmployeAction extends Action {
+public class EditEmployeAction extends GenericAction {
 
   protected void updateUser(ActionForm form)
     throws Exception {

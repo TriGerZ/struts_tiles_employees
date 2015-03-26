@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -19,7 +18,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-public class AddEmployeAction extends Action {
+public class AddEmployeAction extends GenericAction {
 
   protected void insertUser(ActionForm form)
     throws Exception {

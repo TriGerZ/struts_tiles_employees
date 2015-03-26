@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class EmployeListeAction extends Action {
+public class EmployeListeAction extends GenericAction {
 
   protected ArrayList getEmployes() {
 

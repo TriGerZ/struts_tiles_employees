@@ -19,7 +19,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginAction extends Action {
+public class LoginAction extends GenericAction {
 
   protected String getUser(String username, String password) {
 

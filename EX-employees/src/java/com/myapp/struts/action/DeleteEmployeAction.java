@@ -18,7 +18,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-public class DeleteEmployeAction extends Action {
+public class DeleteEmployeAction extends GenericAction {
 
   protected void deleteEmploye(String username)
     throws Exception {
