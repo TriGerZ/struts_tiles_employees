@@ -55,6 +55,28 @@ public class ModelEmployeeImpl implements Model {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModelEmployeeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
         }
 
         return ok;
@@ -128,6 +150,28 @@ public class ModelEmployeeImpl implements Model {
 
         } catch (SQLException ex) {
             Logger.getLogger(ModelEmployeeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
         }
 
         return ok;
@@ -153,6 +197,28 @@ public class ModelEmployeeImpl implements Model {
 
         } catch (SQLException ex) {
             Logger.getLogger(ModelEmployeeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
         }
 
         return ok;
@@ -188,6 +254,28 @@ public class ModelEmployeeImpl implements Model {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModelEmployeeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
         }
 
         return employes;
@@ -221,6 +309,28 @@ public class ModelEmployeeImpl implements Model {
 
         } catch (SQLException ex) {
             Logger.getLogger(ModelEmployeeImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
         }
 
         return form;
