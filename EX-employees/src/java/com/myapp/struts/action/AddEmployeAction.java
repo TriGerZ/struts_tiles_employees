@@ -1,5 +1,7 @@
 package com.myapp.struts.action;
 
+import com.myapp.model.Model;
+import com.myapp.model.ModelException;
 import com.myapp.struts.formbean.EmployeForm;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,119 +13,92 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionMessage;
-
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AddEmployeAction extends GenericAction {
 
-  protected void insertUser(ActionForm form)
-    throws Exception {
+    @Override
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        // Cible par defaut en cas de succes
+        String target = "success";
 
-    String user = null;
-    Connection conn = null;
-    Statement stmt = null;
-    ResultSet rs = null;
+        // teste l'identification de l'utilisateur ?
+        HttpSession session = request.getSession();
+        if (session.getAttribute("USER") == null) {
 
-    
+            // L'utilisateur n'est pas identifie
+            target = "login";
+            ActionMessages errors = new ActionMessages();
 
-    try {
+            errors.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("errors.login.required"));
 
-      EmployeForm eForm = (EmployeForm)form;
-      Class.forName ("org.apache.derby.jdbc.ClientDriver");
-      conn = DriverManager.getConnection("jdbc:derby://localhost:1527/sample", "app", "app");
-      stmt = conn.createStatement();
+            // Renvoyer les erreurs au formulaire originel
+            if (!errors.isEmpty()) {
 
-      StringBuilder sqlString =
-        new StringBuilder("insert into employes values ('");
+                saveErrors(request, errors);
+            }
+            // Transmission a la vue appropriee
+            return (mapping.findForward(target));
+        }
 
-      sqlString.append(eForm.getUsername()).append("', ");
-      sqlString.append("'").append(eForm.getPassword()).append("', ");
-      sqlString.append("'").append(eForm.getName()).append("', ");
-      sqlString.append(eForm.getRoleid()).append(", ");
-      sqlString.append("'").append(eForm.getPhone()).append("', ");
-      sqlString.append("'").append(eForm.getEmail()).append("', ");
-      sqlString.append(eForm.getDepid()).append(")");
+        if (isCancelled(request)) {
+            // Annulation. Retour a la liste des employes
+            return (mapping.findForward(target));
+        }
 
-      stmt.execute(sqlString.toString());
-    }
-    finally {
+        String username = null;
+        String password = null;
+        String name = null;
+        String idRole = null;
+        String phone = null;
+        String email = null;
+        String idDep = null;
+        int req = 0;
 
-      if (rs != null) {
+        if (form != null) {
 
-          rs.close();
-      }
-      if (stmt != null) {
+            EmployeForm employeForm = (EmployeForm) form;
 
-          stmt.close();
-      }
-      if (conn != null) {
+            username = employeForm.getUsername();
+            password = employeForm.getPassword();
+            name = employeForm.getName();
+            idRole = employeForm.getRoleid();
+            phone = employeForm.getPhone();
+            email = employeForm.getEmail();
+            idDep = employeForm.getDepid();
 
-          conn.close();
-      }
-    }
-  }
+            try {
+                Model m = getModel();
+                req = m.addEmploye(username, password, name, idRole, phone, email, idDep);
+            } catch (ModelException ex) {
+                Logger.getLogger(AddEmployeAction.class.getName()).log(Level.SEVERE, null, ex);
+                req = 0;
+            }
 
-  @Override
-  public ActionForward execute(ActionMapping mapping,
-    ActionForm form,
-    HttpServletRequest request,
-    HttpServletResponse response)
-    throws IOException, ServletException {
+        }
 
-    // Cible par defaut en cas de succes
-    String target = "success";
+        // Cible en cas d'échec
+        if (req == 0) {
 
-    // teste l'identification de l'utilisateur ?
-    
-      HttpSession session = request.getSession();
-      if ( session.getAttribute("USER") == null ) {
+            System.err.println("Setting target to error");
+            target = "error";
+            ActionMessages errors = new ActionMessages();
 
-        // L'utilisateur n'est pas identifie
-        target = "login";
-        ActionMessages errors = new ActionMessages();
+            errors.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("errors.database.error", "Erreur"));
 
-        errors.add(ActionMessages.GLOBAL_MESSAGE,
-          new ActionMessage("errors.login.required"));
+            // Signalement des erreurs eventuelles
+            if (!errors.isEmpty()) {
 
-        // Renvoyer les erreurs au formulaire originel
-        if (!errors.isEmpty()) {
+                saveErrors(request, errors);
+            }
 
-          saveErrors(request, errors);
         }
         // Transmission a la vue appropriee
         return (mapping.findForward(target));
+
     }
-
-    if ( isCancelled(request) ) {
-
-      // Annulation. Retour a la liste des employes
-      return (mapping.findForward(target));
-    }
-
-    try {
-
-      insertUser(form);
-    }
-    catch (Exception e) {
-
-      System.err.println("Setting target to error");
-      target = "error";
-      ActionMessages errors = new ActionMessages();
-
-      errors.add(ActionMessages.GLOBAL_MESSAGE,
-        new ActionMessage("errors.database.error", e.getMessage()));
-
-      // Signalement des erreurs eventuelles
-      if (!errors.isEmpty()) {
-
-        saveErrors(request, errors);
-      }
-    }
-    // Transmission a la vue appropriee
-    return (mapping.findForward(target));
-  }
 }
