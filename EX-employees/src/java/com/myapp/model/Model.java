@@ -14,10 +14,14 @@ import org.apache.struts.action.ActionForm;
  */
 public interface Model {
 
-    public ArrayList getEmployes();
-    public int addEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep);
-    public int editEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep);
-    public int deleteEmploye(String username);
-    public ActionForm buildEmployeForm(String username);
+    public ArrayList getEmployes() throws ModelException;
+
+    public int addEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep) throws ModelException;
+
+    public int editEmploye(String username, String password, String name, String idRole, String phone, String email, String idDep) throws ModelException;
+
+    public int deleteEmploye(String username) throws ModelException;
+
+    public ActionForm buildEmployeForm(String username) throws ModelException;
 
 }
