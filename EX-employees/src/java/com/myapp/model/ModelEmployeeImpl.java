@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.activation.DataSource;
+import javax.sql.DataSource;
 import org.apache.struts.action.ActionForm;
 
 /**
