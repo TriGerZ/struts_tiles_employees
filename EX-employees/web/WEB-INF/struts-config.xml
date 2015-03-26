@@ -24,14 +24,14 @@
     <!-- <action path="/index" type="org.apache.struts.actions.ForwardAction"
         parameter="/login.jsp" /> -->
         
-    <action path="/index" type="org.apache.struts.actions.ForwardAction"
+    <action path="/index" type="org.springframework.web.struts.DelegatingActionProxy"
         parameter="tiles.login" />    
     
-    <action path="/addemploye" type="org.apache.struts.actions.ForwardAction"
+    <action path="/addemploye" type="org.springframework.web.struts.DelegatingActionProxy"
         parameter="tiles.addemploye" />
     
     <action path="/Login"
-      type="com.myapp.struts.action.LoginAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       validate="true"
       input="tiles.login"
       name="loginForm"
@@ -40,13 +40,13 @@
     </action>
 
     <action path="/EmployeListe"
-      type="com.myapp.struts.action.EmployeListeAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       scope="request" >
       <forward name="success" path="tiles.employeliste"/>
     </action>
 
     <action path="/Add"
-      type="com.myapp.struts.action.AddEmployeAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       name="employeForm"
       scope="request"
       input="tiles.addemploye"
@@ -57,7 +57,7 @@
     </action>
 
     <action path="/Edit"
-      type="com.myapp.struts.action.GetEmployeAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       name="employeForm"
       scope="request"
       validate="false" >
@@ -66,7 +66,7 @@
     </action>
 
     <action path="/EditEmploye"
-      type="com.myapp.struts.action.EditEmployeAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       name="employeForm"
       scope="request"
       input="tiles.editemploye"
@@ -77,7 +77,7 @@
     </action>
 
     <action path="/Delete"
-      type="com.myapp.struts.action.DeleteEmployeAction"
+      type="org.springframework.web.struts.DelegatingActionProxy"
       scope="request"
       validate="false" >
       <forward name="success" path="/EmployeListe.do"/>
@@ -120,6 +120,10 @@
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
         <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
         <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn" >
+        <set-property property="contextConfigLocation" value="/WEB-INF/action-servlet.xml" />
     </plug-in>
   
 </struts-config>
