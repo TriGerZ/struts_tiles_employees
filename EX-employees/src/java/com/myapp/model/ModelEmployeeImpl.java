@@ -61,6 +61,54 @@ public class ModelEmployeeImpl implements Model {
     }
 
     @Override
+    public String getByLoginPassword(String username, String password) throws ModelException {
+
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        String user = null;
+
+        try {
+            conn = getConnection();
+            stmt = conn.createStatement();
+
+            rs = stmt.executeQuery("SELECT * FROM employes WHERE username=\'" + username + "' " + "AND password='" + password + "'");
+
+            if (rs.next()) {
+                user = rs.getString("username");
+            } else {
+                System.err.println("---->Utilisateur non trouve<----");
+            }
+
+        } catch (Exception e) {
+            throw new ModelException(e.getMessage());
+        } finally {
+
+            if (stmt != null) {
+
+                try {
+
+                    stmt.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+            if (conn != null) {
+
+                try {
+
+                    conn.close();
+                } catch (SQLException sqle) {
+
+                    System.err.println(sqle.getMessage());
+                }
+            }
+        }
+        return user;
+    }
+
+    @Override
     public int editEmploye(String username, String password, String name, String roleId, String phone, String email, String depId) {
         Connection conn = null;
         Statement stmt = null;
