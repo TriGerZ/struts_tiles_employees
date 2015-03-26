@@ -11,7 +11,7 @@
     <table width="500" border="0">
         <tr>
             <td><bean:message key="app.username" />:</td>
-            <td><html:text property="username" /></td>
+            <td><html:text property="username" disabled="true"/></td>
             <td><bean:message key="app.password" />:</td>
             <td><html:password property="password" /></td>
         </tr>
