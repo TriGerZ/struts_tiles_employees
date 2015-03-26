@@ -12,11 +12,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionMessage;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
 public class DeleteEmployeAction extends GenericAction {
 
     @Override

@@ -1,7 +1,6 @@
 package com.myapp.struts.action;
 
 import com.myapp.model.Model;
-import com.myapp.struts.formbean.EmployeForm;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +11,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionMessage;
-
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 public class GetEmployeAction extends GenericAction {
 
