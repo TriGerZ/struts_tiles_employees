@@ -27,7 +27,7 @@
     <action path="/index" type="org.apache.struts.actions.ForwardAction"
         parameter="tiles.login" />    
     
-    <action path="/addemploye" type="org.springframework.web.struts.DelegatingActionProxy"
+    <action path="/addemploye" type="org.apache.struts.actions.ForwardAction"
         parameter="tiles.addemploye" />
     
     <action path="/Login"
